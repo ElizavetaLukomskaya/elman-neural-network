@@ -79,7 +79,7 @@ def input_parametrs():
             n = int(input('Enter limit of sequence: '))
             sequence = fib(n)
 
-    return p, L, alpha, e, sequence
+    return p, L, alpha, e, sequence, menu
 
 def generate_matrix(sequence, p, L):
     return [[sequence[i+l] for i in range(p)] for l in range(L)]
@@ -170,9 +170,10 @@ def step_predict(i, input_matrix, context_matrix_elman, matrix_1, matrix_2):
 
     return Y[0][0]
 
-def write_to_txt(matrix_1, matrix_2, context):
+def write_to_txt(sequence_type, matrix_1, matrix_2, context):
     # сохранение весов
     with open('matrix_1.txt', 'w') as f:
+        f.write(f'{sequence_type}' + '\n')
         for i in range(len(matrix_1)):
             for j in range(len(matrix_1[0])):
                 f.write(f"{matrix_1[i][j]} ")

@@ -1,7 +1,7 @@
 from utils import *
 
 def train():
-    p, L, alpha, e, sequence = input_parametrs()
+    p, L, alpha, e, sequence, sequence_type = input_parametrs()
 
     input_matrix = generate_matrix(sequence, p, L+1)
     matrix_1, matrix_2 = generate_weight_matrix(p, L)
@@ -20,8 +20,8 @@ def train():
         print(f'Error {iteration}: ', sum_error)
         iteration += 1
 
-        if sum_error < e or iteration >=100000:
-            write_to_txt(matrix_1, matrix_2, [prev_elman])
+        if sum_error < e or iteration >=1000000:
+            write_to_txt(sequence_type, matrix_1, matrix_2, [prev_elman])
             break
 
 
